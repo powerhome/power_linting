@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "spec_helper"
+
 RSpec.describe RuboCop::Cop::Cobra::ModelFilePlacement do
   subject(:cop) { described_class.new }
 
