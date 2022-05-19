@@ -32,8 +32,7 @@ jobs:
       - name: Release Gem
         uses: cadwallion/publish-rubygems-action@master
         if: contains(github.ref, 'refs/tags/v')
-        working-directory: ./rubocop-cobra
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
           RUBYGEMS_API_KEY: ${{ secrets.rubygems_api_key }}
-          RELEASE_COMMAND: rake release
+          RELEASE_COMMAND: 'cd rubocop-cobra && rake release'
