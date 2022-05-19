@@ -30,7 +30,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
-    # if: contains(github.ref, 'refs/tags/v')
+    if: contains(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v2
       - id: version-changed
