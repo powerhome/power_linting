@@ -3,13 +3,8 @@ name: rubocop-cobra
 on:
   push:
 
-defaults:
-  env:
-    WORKDIR: rubocop-cobra
-  run:
-    working-directory: ${{ env.WORKDIR }}
-  with:
-    working-directory: ${{ env.WORKDIR }}
+env:
+  WORKDIR: rubocop-cobra
 
 jobs:
   build:
@@ -27,7 +22,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+          working-directory: ${{ env.WORKDIR }}
       - name: Run the build script
+        working-directory: ${{ env.WORKDIR }}
         run: bundle exec rake
 
   release:
