@@ -20,6 +20,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+          working-directory: ./rubocop-cobra
       - name: Run the build script
         working-directory: ./rubocop-cobra
         run: bundle exec rake
