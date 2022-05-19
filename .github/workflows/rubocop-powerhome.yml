@@ -42,3 +42,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
           RUBYGEMS_API_KEY: ${{ secrets.rubygems_api_key }}
+          WORKDIR: ${{ env.PROJECT_DIR }}
