@@ -5,8 +5,8 @@ require_relative "lib/rubocop/powerhome/version"
 Gem::Specification.new do |spec|
   spec.name = "rubocop-powerhome"
   spec.version = RuboCop::Powerhome::VERSION
-  spec.authors = ["Carlos Palhares"]
-  spec.email = ["chjunior@gmail.com"]
+  spec.authors = ["Carlos Palhares", "Garett Arrowood"]
+  spec.email = ["chjunior@gmail.com", "garettarrowood@gmail.com"]
 
   spec.summary = "Powerhome Rubocop standard rules"
   spec.description = "Powerhome Rubocop standard rules"
@@ -41,4 +41,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop-rake"
   spec.add_runtime_dependency "rubocop-rspec"
   spec.metadata["rubygems_mfa_required"] = "true"
+
+  spec.add_development_dependency "pry-byebug", "3.9.0"
 end

@@ -5,8 +5,8 @@ require_relative "lib/rubocop/cobra/version"
 Gem::Specification.new do |spec|
   spec.name = "rubocop-cobra"
   spec.version = RuboCop::Cobra::VERSION
-  spec.authors = ["Carlos Palhares"]
-  spec.email = ["chjunior@gmail.com"]
+  spec.authors = ["Carlos Palhares", "Garett Arrowood"]
+  spec.email = ["chjunior@gmail.com", "garettarrowood@gmail.com"]
 
   spec.summary = "Cobra rubocop linters"
   spec.description = "Cobra rubocop linters"
@@ -38,4 +38,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop"
   spec.add_runtime_dependency "rubocop-powerhome"
   spec.metadata["rubygems_mfa_required"] = "true"
+
+  spec.add_development_dependency "pry-byebug", "3.9.0"
 end
