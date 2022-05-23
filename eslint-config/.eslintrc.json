@@ -1,3 +1,1 @@
-{
-  "extends": "@powerhome/eslint-config/flow"
-}
+{ "extends": "@powerhome/eslint-config/base" }
