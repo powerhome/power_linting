@@ -14,7 +14,7 @@ RSpec.describe RuboCop::Cop::Cobra::ViewComponentFilePlacement do
       expect_no_offenses(source, random_file)
     end
 
-    it "when job is correctly namespaced" do
+    it "when view_component is correctly namespaced" do
       file_path = "root/components/my_component/app/components/my_component/resource/foo_component.rb"
 
       expect_no_offenses(source, file_path)

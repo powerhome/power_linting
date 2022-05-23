@@ -29,7 +29,7 @@ module RuboCop
       #   # good
       #   # path: components/my_component/app/components/my_component/resource/foo_component.rb
       #   module MyComponent
-      #     module ControllerNamespace
+      #     module Resource
       #       class FooComponent
       #         # ...
       #       end
