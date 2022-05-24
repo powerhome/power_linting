@@ -11,7 +11,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Node ${{ env.NODE_VERSION }}
+    name: Build
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node ${{ env.NODE_VERSION }}
@@ -27,6 +27,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    name: Release
     if: contains(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v2
