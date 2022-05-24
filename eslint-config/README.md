@@ -37,7 +37,7 @@ That's it! You can override the standard configuration after that.
 
 ## Flow type apps
 
-For flow-based apps, replace `@powerhome` by `@powerhome/eslint-config/flow`.
+For flow-based apps, replace `@powerhome` by `@powerhome/eslint-config/flow`. Note that usage of Flow at Power is not recommended, and all projects should migrate to TypeScript; this set of rules is provided only for transitionary purposes and will be removed in future releases.
 
 ## Contributing
 
