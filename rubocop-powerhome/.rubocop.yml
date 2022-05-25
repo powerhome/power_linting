@@ -8,6 +8,7 @@ Naming/FileName:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'rubocop-powerhome.gemspec'
 
 Rails:
   Enabled: false
