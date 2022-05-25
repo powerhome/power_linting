@@ -5,18 +5,21 @@ module RuboCop
     module Naming
       # todo description
       class ViewComponent < RuboCop::Cop::Cop
-        # MSG = "Do not directly inherit from a global %<class>s. " \
-        #       "Instead, inherit from your component's modularized " \
-        #       "%<class>s, such as MyComponent::%<class>s."
-
         def on_class(node)
-          binding.pry
-          # inheritance_constant = node.node_parts[1]
-          # inheritance_class = inheritance_constant&.source
-          # return unless PROTECTED_GLOBAL_CONSTANTS.include?(inheritance_class)
+          inheritance_klass = node.node_parts[1]&.source
+          return unless view_component_class?(inheritance_klass)
 
-          # add_offense(inheritance_constant,
-          #             message: format(MSG, class: inheritance_class))
+          klass = node.node_parts[0]&.source
+          return if klass.end_with?("Component")
+
+          add_offense(node.node_parts[0], message: "End ViewComponent classnames with 'Component'")
+        end
+
+      private
+
+        def view_component_class?(inheritance_klass)
+          inheritance_klass.end_with?("::ApplicationComponent") ||
+            inheritance_klass.end_with?("ViewComponent::Base")
         end
       end
     end
