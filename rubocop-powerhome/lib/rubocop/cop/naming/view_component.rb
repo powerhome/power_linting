@@ -3,7 +3,19 @@
 module RuboCop
   module Cop
     module Naming
-      # todo description
+      # This cop requires ViewComponent classes to end with Component in their classname.
+      #
+      # @example
+      #   # bad
+      #   class Foo < ::ViewComponent::Base
+      #     # ...
+      #   end
+      #
+      #   # good
+      #   class FooComponent < ::ViewComponent::Base
+      #     # ...
+      #   end
+      #
       class ViewComponent < RuboCop::Cop::Cop
         def on_class(node)
           inheritance_klass = node.node_parts[1]&.source
@@ -18,8 +30,7 @@ module RuboCop
       private
 
         def view_component_class?(inheritance_klass)
-          inheritance_klass.end_with?("::ApplicationComponent") ||
-            inheritance_klass.end_with?("ViewComponent::Base")
+          inheritance_klass.end_with?("::ApplicationComponent", "ViewComponent::Base")
         end
       end
     end
