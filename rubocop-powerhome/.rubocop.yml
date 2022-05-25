@@ -5,5 +5,9 @@ Naming/FileName:
   Exclude:
     - lib/rubocop-powerhome.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Rails:
   Enabled: false
