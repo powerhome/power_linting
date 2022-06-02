@@ -1,0 +1,7 @@
+site_name: Power Linting
+site_description: Power linting libraries for multiple languages
+nav:
+  - 'Home': 'README.md'
+
+plugins:
+  - techdocs-core

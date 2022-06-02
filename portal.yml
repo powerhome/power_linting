@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Library
+metadata:
+  name: power_linting
+  title: Power Linting
+  description: Power linting libraries for multiple languages.
+spec:
+  type: library
+  owner: heroes-for-hire
+  lifecycle: production
