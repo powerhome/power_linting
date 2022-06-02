@@ -1,9 +1,11 @@
 apiVersion: backstage.io/v1alpha1
-kind: Library
+kind: Component
 metadata:
-  name: power_linting
+  name: power-linting
   title: Power Linting
-  description: Power linting libraries for multiple languages.
+  description: Tools for working with Component Based Rails Apps
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: library
   owner: heroes-for-hire
