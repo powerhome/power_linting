@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: power-linting
   title: Power Linting
-  description: Tools for working with Component Based Rails Apps
+  description: Power linting libraries for multiple languages.
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
