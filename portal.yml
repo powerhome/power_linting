@@ -10,3 +10,4 @@ spec:
   type: library
   owner: heroes-for-hire
   lifecycle: production
+  system: power-application-framework
