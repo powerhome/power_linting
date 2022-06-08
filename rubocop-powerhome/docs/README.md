@@ -27,6 +27,23 @@ That's it! You can override the standard configuration after that.
 
 It's recommended that you set `AllCops/TargetRubyVersion` in your project because some cops are Ruby version-dependent. See more [here](https://docs.rubocop.org/rubocop/configuration.html#setting-the-target-ruby-version).
 
+To run this with CI builds, you will need something like this:
+
+```ruby
+'Lint': {
+  app.dockerStage("Lint") {
+    dockerRun(imageId: appImage, command: "bin/rubocop")
+  }
+}
+```
+
+Another good practice would be to include a convenient make task:
+
+```ruby
+rubocop: ## Runs Rubocop
+	docker compose run --rm web setuser app bin/rubocop
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
