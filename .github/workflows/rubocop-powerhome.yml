@@ -17,7 +17,7 @@ jobs:
           - '3.1.2'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -27,15 +27,18 @@ jobs:
       - name: Run the build script
         working-directory: ${{ env.PROJECT_DIR }}
         run: bundle exec rake
+      - name: Ensure license compliance
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: bundle exec license_finder
 
   release:
     needs: build
     runs-on: ubuntu-latest
     if: contains(github.ref, 'refs/tags/v')
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: version-changed
-        uses: tj-actions/changed-files@v20
+        uses: tj-actions/changed-files@v23
         with:
           files: ${{ env.PROJECT_DIR }}/**/version.rb
       - uses: xjunior/publish-rubygems-action@master

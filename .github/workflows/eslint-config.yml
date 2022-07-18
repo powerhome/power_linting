@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Node ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with: 
@@ -30,9 +30,9 @@ jobs:
     name: Release
     if: contains(github.ref, 'refs/tags/v')
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: version-changed
-        uses: tj-actions/changed-files@v20
+        uses: tj-actions/changed-files@v23
         with:
           files: ${{ env.PROJECT_DIR }}/package.json
       - name: Set up Node ${{ env.NODE_VERSION }}
