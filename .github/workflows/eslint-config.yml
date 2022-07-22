@@ -28,7 +28,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     name: Release
-    if: ${{ contains(github.ref, 'refs/tags/v') && contains(github.ref, env.PROJECT_DIR) }}
+    if: ${{ contains(github.ref, 'refs/tags/v') && contains(github.ref, github.workflow) }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node ${{ env.NODE_VERSION }}
