@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-eslint-custom-rules",
+  "name": "@powerhome/eslint-custom-rules",
   "version": "0.0.0",
   "description": "Power ESLint custom rules",
   "keywords": [

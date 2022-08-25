@@ -1,41 +1,40 @@
-/**
- * @fileoverview Do not use Lodash's partial
- * @author 
- */
-"use strict";
-
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
-
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
   meta: {
-    type: null, // `problem`, `suggestion`, or `layout`
+    type: "suggestion",
     docs: {
       description: "Do not use Lodash's partial",
-      recommended: false,
-      url: null, // URL to the documentation page for this rule
+      recommended: true,
+      url: "https://github.com/powerhome/rfcs/blob/main/0072-deprecate-lodash-partial.md",
     },
-    fixable: null, // Or `code` or `whitespace`
-    schema: [], // Add a schema if the rule has options
+    schema: [],
+    messages: {
+      unexpectedPartial: "Unexpected Lodash's partial, see: https://github.com/powerhome/rfcs/blob/main/0072-deprecate-lodash-partial.md"
+    }
   },
 
   create(context) {
-    // variables should be defined here
-
-    //----------------------------------------------------------------------
-    // Helpers
-    //----------------------------------------------------------------------
-
-    // any helper functions should go here or else delete this section
-
-    //----------------------------------------------------------------------
-    // Public
-    //----------------------------------------------------------------------
+    const sourceCode = context.getSourceCode();
+    const text = sourceCode.getText();
 
     return {
-      // visitor functions for different types of nodes
+      CallExpression(node) {
+        const lastToken = sourceCode.getLastToken(node);
+        const lastCalleeToken = sourceCode.getLastToken(node.callee);
+
+        if(lastCalleeToken.value === 'partial' && text.indexOf('lodash') > -1)
+          context.report({
+            node,
+            loc: {
+              start: {
+                line: lastCalleeToken.loc.end.line,
+                column: lastCalleeToken.loc.end.column - 1
+              },
+              end: lastToken.loc.start
+            },
+            messageId: "unexpectedPartial",
+          });
+      }
     };
   },
 };
