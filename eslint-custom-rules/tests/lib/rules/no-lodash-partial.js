@@ -5,6 +5,8 @@ const rule = require("../../../lib/rules/no-lodash-partial"),
 
 const ruleTester = new RuleTester();
 const errorMessage = "Unexpected Lodash's partial, see: https://github.com/powerhome/rfcs/blob/main/0072-deprecate-lodash-partial.md";
+const errors = [{ message: errorMessage, type: "CallExpression" }]
+const parserOpts = { ecmaVersion: 6, sourceType: "module" }
 
 ruleTester.run("no-lodash-partial", rule, {
   valid: [
@@ -16,33 +18,33 @@ ruleTester.run("no-lodash-partial", rule, {
     },
     {
       code: "() => { doSomething() }",
-      parserOptions: { ecmaVersion: 6 },
+      parserOptions: parserOpts,
     },
     {
       code: "() => doSomething()",
-      parserOptions: { ecmaVersion: 6 },
+      parserOptions: parserOpts,
     }
   ],
   invalid: [
     {
       code: "import lodash from 'lodash' \n lodash.partial(doSomething, 'foo')",
-      errors: [{ message: errorMessage, type: "CallExpression" }],
-      parserOptions: { ecmaVersion: 6, sourceType: "module" },
+      errors: errors,
+      parserOptions: parserOpts,
     },
     {
       code: "import { partial } from 'lodash' \n partial(doSomething, 'foo')",
-      errors: [{ message: errorMessage, type: "CallExpression" }],
-      parserOptions: { ecmaVersion: 6, sourceType: "module" },
+      errors: errors,
+      parserOptions: parserOpts,
     },
     {
       code: "import { partial } from 'lodash' \n partial(doSomething)",
-      errors: [{ message: errorMessage, type: "CallExpression" }],
-      parserOptions: { ecmaVersion: 6, sourceType: "module" },
+      errors: errors,
+      parserOptions: parserOpts,
     },
     {
       code: "import { partial } from 'lodash' \n () => partial(doSomething)",
-      errors: [{ message: errorMessage, type: "CallExpression" }],
-      parserOptions: { ecmaVersion: 6, sourceType: "module" },
+      errors: errors,
+      parserOptions: parserOpts,
     },
   ],
 });
