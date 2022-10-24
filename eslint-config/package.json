@@ -19,7 +19,7 @@
     "lint": "eslint lib/*"
   },
   "peerDependencies": {
-    "eslint": "7.32.0",
+    "eslint": "8.26.0",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-jsx-control-statements": "3.0.0",
     "eslint-plugin-react": "7.31.10",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "semver": "7.3.8",
-    "eslint": "7.32.0",
+    "eslint": "8.26.0",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-jsx-control-statements": "3.0.0",
     "eslint-plugin-react": "7.31.10",
